@@ -10,7 +10,7 @@ import Foundation
 
 
 class TaskArray {
-    var taskArray: [Task] = [Task(detials: "You need to take the trash out.", title: "Take the trash out")
+    var taskArray: [Task] = [Task(detials: "You need to take the trash out.", title: "Take the trash out",importance:1)
 ]//this is the array where every task is stored
         //This makes an array that can store task.
     
@@ -25,9 +25,13 @@ class TaskArray {
             print("Invalid input")
             return//This takes in user input and verifys it
         }
+        print("How important is this task ")
+        guard let importance12 = Int(readLine()!) else {//this creats a var that is used later to add to the array
+            print("Invalid input")
+            return//This takes in user input and verifys it
+        }
         
-        
-        let newTask = Task(detials: detailsOfTask, title: nameOfTask)
+        let newTask = Task(detials: detailsOfTask, title: nameOfTask, importance: importance12)
         taskArray.append(newTask)//This adds the new task to the array
         print("Updated List Of task")
         for task in taskArray {//This prints the new list of task
@@ -40,7 +44,7 @@ class TaskArray {
     func listCompleteTask() {//prints every task in task array where complete is true
         for task in taskArray {
             if task.complete  == true {
-                print(task.title)
+               print("(\(task.importance) \(task.title)")//Prints the title and importance of the task
             }
         }
         sleep(2)
@@ -49,7 +53,7 @@ class TaskArray {
     func listUncompletedTask() {//prints every task in task array where complete is false
         for task in taskArray {
             if task.complete == false {
-                print(task.title)
+               print("(\(task.importance) \(task.title)")//Prints the title and importance of the task
             }
         }
         sleep(2)
@@ -57,13 +61,14 @@ class TaskArray {
     
     func listAllTask()  {
         for task in taskArray {//prints out every task in task array
-            print(task.title)
+            print("(\(task.importance) \(task.title)")//Prints the title and importance of the task
+            
         }
          sleep(2)
     }
     
     func markTaskAsComplete () {
-        for index in 0..<taskArray.count {
+        for index in 0..<taskArray.count {//Counts from 0 to the max of the array
             if taskArray[index].complete == false {
                 print("\(index). \(taskArray[index].title)")
             }//This prints the value of everything in the array next to the title of each task in the array
@@ -124,11 +129,6 @@ class TaskArray {
         }
         sleep(2)
     }
-    
-    
-
-        
-    
-    }
+}
     
 

@@ -13,11 +13,12 @@ class Task {
     let detials: String
     let title: String
     var completeDate: Date?
-    
-    init(detials: String, title: String) {
+    var importance: Int
+    init(detials: String, title: String, importance: Int) {
         
         self.detials = detials
         self.title = title
+        self.importance = importance
     }
     
 }
